@@ -1,0 +1,55 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"><b>LISTA DE PERSONAL</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  
+  <div class="header-bg">
+    <h2>ESFORSE</h2>
+    <p>Personal de Aspirantes</p>
+  </div>
+
+  <div class="list-container">
+    
+    <div class="state-card" *ngIf="cargando">
+      <ion-spinner color="success" name="crescent"></ion-spinner>
+      <p>Cargando registros...</p>
+    </div>
+
+    <div class="state-card" *ngIf="!cargando && listaAspirantes.length === 0">
+      <ion-icon name="people-circle-outline"></ion-icon>
+      <p>No hay aspirantes registrados en el sistema.</p>
+    </div>
+
+    <ion-list class="custom-list" *ngIf="!cargando && listaAspirantes.length > 0">
+      
+      <ion-item *ngFor="let soldado of listaAspirantes" class="soldier-item" lines="none">
+        
+        <ion-avatar slot="start" class="soldier-avatar">
+          <img src="assets/icon/favicon.png" />
+        </ion-avatar>
+        
+        <ion-label>
+          <h3 class="soldier-name">{{ soldado.nombres }} {{ soldado.apellidos || '' }}</h3>
+          <p class="soldier-details">
+            <ion-icon name="id-card-outline"></ion-icon> CI: {{ soldado.cedula }}
+          </p>
+          <p class="soldier-company">
+            <ion-icon name="flag-outline"></ion-icon> Cía: {{ soldado.compania }}
+          </p>
+        </ion-label>
+        
+        <ion-badge color="dark" slot="end" mode="ios">{{ soldado.anio_militar }}</ion-badge>
+        
+      </ion-item>
+
+    </ion-list>
+  </div>
+
+</ion-content>

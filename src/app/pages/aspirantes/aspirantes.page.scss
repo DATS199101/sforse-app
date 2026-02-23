@@ -1,0 +1,94 @@
+ion-content {
+  --background: #f4f6f8;
+}
+
+/* --- Fondo verde superior --- */
+.header-bg {
+  background: linear-gradient(180deg, var(--ion-color-success) 0%, #2b5329 100%);
+  padding: 20px 20px 50px;
+  text-align: center;
+  color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+  h2 {
+    font-weight: 800;
+    margin: 0 0 5px;
+    letter-spacing: -0.5px;
+  }
+  p {
+    margin: 0;
+    color: #e8f5e9;
+    font-size: 0.95rem;
+  }
+}
+
+/* --- Contenedor de la lista (Sube un poco para superponerse al verde) --- */
+.list-container {
+  margin-top: -30px;
+  padding: 0 15px 30px;
+}
+
+.custom-list {
+  background: transparent;
+}
+
+/* --- Diseño de cada tarjeta de soldado --- */
+.soldier-item {
+  --background: white;
+  --border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .soldier-avatar {
+    border: 2px solid var(--ion-color-success);
+    padding: 2px;
+    background: #f4f6f8;
+  }
+
+  .soldier-name {
+    font-weight: 800;
+    color: #2b5329; /* Verde oscuro para el nombre */
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+  }
+
+  .soldier-details, .soldier-company {
+    color: #666;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+
+    ion-icon {
+      font-size: 1rem;
+      color: #999;
+    }
+  }
+}
+
+/* --- Tarjeta de "Cargando" o "Vacío" --- */
+.state-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+  ion-icon {
+    font-size: 4rem;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+}

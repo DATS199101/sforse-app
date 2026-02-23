@@ -1,0 +1,34 @@
+.header-info {
+  margin-bottom: 20px;
+  h2 { font-weight: 800; color: #2f5928; margin-bottom: 5px; }
+  p { color: #666; font-size: 0.9rem; }
+}
+
+.lista-militar {
+  background: transparent;
+
+  .falta-item {
+    --background: #ffffff;
+    --border-radius: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+
+    .descripcion {
+      font-weight: 600;
+      color: #333;
+      white-space: normal; // Permite que el texto largo se vea en varias líneas
+    }
+    
+    .tipo {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      strong { color: #2f5928; }
+    }
+  }
+}
+
+ion-item-option {
+  border-radius: 10px;
+  margin: 5px;
+}

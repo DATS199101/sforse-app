@@ -1,0 +1,82 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #2f5928; color: white;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"><b>NUEVA SANCIÓN</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+
+  <div class="profile-section" *ngIf="soldado">
+    <div class="avatar-container">
+      <ion-avatar class="custom-avatar">
+        <img src="assets/icon/favicon.png" alt="Avatar" /> 
+      </ion-avatar>
+    </div>
+    
+    <h2 class="profile-name">{{ soldado.nombres }} {{ soldado.apellidos }}</h2>
+    <p class="profile-company">Compañía: <strong>{{ soldado.compania }}</strong></p>
+    
+    <ion-chip color="light" class="custom-chip">
+      <ion-icon name="medal-outline"></ion-icon>
+      <ion-label>{{ soldado.anio_militar }}</ion-label> 
+    </ion-chip>
+  </div>
+
+  <ion-card class="form-card">
+    <ion-card-header>
+      <ion-card-subtitle color="danger">REGISTRO DISCIPLINARIO</ion-card-subtitle>
+      <ion-card-title>Detalles de la Falta</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      
+      <ion-item lines="none" class="custom-input" [disabled]="rolUsuario === 'aspirante'">
+        <ion-icon name="warning-outline" slot="start" color="success"></ion-icon>
+        <div class="input-wrapper">
+          <span class="custom-label">Seleccione la Falta</span>
+          <ion-select placeholder="Toque para buscar..." 
+                      [(ngModel)]="faltaSeleccionada" 
+                      interface="action-sheet" 
+                      cancelText="Cancelar">
+            <ion-select-option *ngFor="let falta of listaFaltas" [value]="falta">
+              ({{ falta.tipo_falta }}) {{ falta.descripcion }}
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" class="custom-input" [disabled]="rolUsuario === 'aspirante'">
+        <ion-icon name="document-text-outline" slot="start" color="medium"></ion-icon>
+        <div class="input-wrapper">
+          <span class="custom-label">Observación Adicional</span>
+          <ion-textarea rows="3" 
+                        placeholder="Ej: No trajo lustradas las botas..." 
+                        [(ngModel)]="observacion" 
+                        [autoGrow]="true"></ion-textarea>
+        </div>
+      </ion-item>
+
+      <div *ngIf="rolUsuario !== 'aspirante'">
+        <ion-button expand="block" 
+                    color="danger" 
+                    class="btn-sancionar" 
+                    (click)="guardarSancion()" 
+                    [disabled]="!faltaSeleccionada">
+          <ion-icon name="save-outline" slot="start"></ion-icon>
+          APLICAR SANCIÓN
+        </ion-button>
+        <p class="helper-text" *ngIf="!faltaSeleccionada">Seleccione una falta para habilitar el botón.</p>
+      </div>
+
+      <div class="modo-lector" *ngIf="rolUsuario === 'aspirante'">
+        <ion-icon name="eye-outline"></ion-icon>
+        <p>Usted está en <b>Modo Lector</b>. No tiene permisos para registrar sanciones.</p>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -35,3 +35,150 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+/* --- ESTILO DE MÁXIMA PRIORIDAD PARA LA ALERTA --- */
+body {
+  --ion-overlay-background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+ion-alert.aspirante-alert {
+  /* Variables nativas de Ionic (La clave del éxito) */
+  --background: #ffffff !important;
+  --max-width: 90% !important;
+  --width: 320px !important;
+
+  .alert-wrapper {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid #ddd !important;
+    overflow: hidden !important;
+  }
+
+  /* Cabecera Verde ESFORSE */
+  .alert-head {
+    background: #2b5329 !important; /* Verde Militar Directo */
+    padding: 24px 16px !important;
+    text-align: center !important;
+    display: block !important;
+
+    .alert-title {
+      color: #ffffff !important;
+      font-size: 1.3rem !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+
+    .alert-sub-title {
+      color: #c8e6c9 !important;
+      font-size: 1.1rem !important;
+      font-weight: 600 !important;
+      margin-top: 8px !important;
+      display: block !important;
+    }
+  }
+
+  /* Contenido */
+  .alert-message {
+    background: #fdfdfd !important;
+    color: #333333 !important;
+    padding: 20px !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  /* Botones */
+  .alert-button-group {
+    background: #ffffff !important;
+    padding: 8px !important;
+    
+    button.alert-button {
+      background: transparent !important;
+      color: #2b5329 !important; /* Verde para los textos */
+      font-weight: 700 !important;
+      
+      .alert-button-inner {
+        justify-content: center !important;
+      }
+
+      /* Botón de cancelar más suave */
+      &.btn-cancelar {
+        color: #e53935 !important; /* Rojo para cancelar */
+      }
+    }
+  }
+}
+/* --- ESTILO MAESTRO PARA ALERTAS Y FORMULARIOS --- */
+.alert-militar {
+  --background: #ffffff !important;
+  --backdrop-opacity: 0.7 !important;
+
+  .alert-wrapper {
+    border-radius: 15px !important;
+    border: 2px solid #2f5928 !important; // Borde verde institucional
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
+  }
+
+  /* Título del Formulario */
+  .alert-head {
+    background: #2f5928 !important;
+    padding: 20px 15px !important;
+    
+    .alert-title {
+      color: #ffffff !important;
+      text-transform: uppercase !important;
+      font-weight: 800 !important;
+      letter-spacing: 1px !important;
+      font-size: 1.2rem !important;
+    }
+  }
+
+  /* Estilo de los Campos de Texto (Inputs) */
+  .alert-input-group {
+    padding: 20px 15px !important;
+
+    .alert-input {
+      border: 1px solid #ddd !important;
+      border-radius: 8px !important;
+      margin-bottom: 10px !important;
+      padding: 12px !important;
+      background: #f9f9f9 !important;
+      color: #333 !important;
+      font-weight: 600 !important;
+
+      &:focus {
+        border-color: #2f5928 !important;
+        background: #fff !important;
+      }
+    }
+  }
+
+  /* Botones de Acción */
+  .alert-button-group {
+    padding: 10px !important;
+    border-top: 1px solid #eee !important;
+
+    .alert-button {
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      
+      // Botón Guardar / Sancionar
+      &:not(.alert-button-role-cancel) {
+        color: #2f5928 !important;
+      }
+
+      // Botón Cancelar
+      &.alert-button-role-cancel {
+        color: #e53935 !important;
+      }
+    }
+  }
+}
+/* Mejora de visibilidad para placeholders en formularios */
+.alert-input::placeholder {
+  color: #999 !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}

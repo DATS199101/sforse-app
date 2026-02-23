@@ -1,0 +1,105 @@
+
+<ion-header class="ion-no-border" [hidden]="escanearActivo">
+  <ion-toolbar style="--background: #2f5928; color: white;">
+    <ion-title>Panel de Control</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-dashboard" [hidden]="escanearActivo">
+  
+  <div class="welcome-box">
+    <h3>¡Hola, {{ usuarioNombre }}!</h3>
+    <p>Sistema <strong>ESFORSE</strong> | <ion-badge color="light">{{ rolUsuario | uppercase }}</ion-badge></p>
+  </div>
+
+  <ion-grid style="margin-top: 20px;">
+    
+    <ion-row *ngIf="rolUsuario === 'admin'">
+      <ion-col size="12">
+        <h3 class="section-title">Gestión de Comando</h3>
+      </ion-col>
+      <ion-col size="6">
+        <div class="menu-card admin-card" routerLink="/mantenimiento-faltas">
+          <div class="icon-circle color-orange">
+            <ion-icon name="settings-outline"></ion-icon>
+          </div>
+          <h4>Catálogo</h4>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="menu-card admin-card" (click)="exportarExcel()">
+          <div class="icon-circle color-green">
+            <ion-icon name="stats-chart-outline"></ion-icon>
+          </div>
+          <h4>Reportes</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="rolUsuario === 'admin' || rolUsuario === 'instructor'">
+      <ion-col size="12" *ngIf="rolUsuario === 'admin'">
+        <h3 class="section-title">Operaciones</h3>
+      </ion-col>
+      
+      <ion-col size="6">
+        <div class="menu-card" (click)="escanearQr()">
+          <div class="icon-circle">
+            <ion-icon name="qr-code-outline"></ion-icon>
+          </div>
+          <h4>Escanear</h4>
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div class="menu-card" routerLink="/aspirantes"> 
+          <div class="icon-circle color-blue">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          <h4>Ver Lista</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="rolUsuario === 'aspirante'">
+      <ion-col size="12">
+        <div class="menu-card horizontal-card" (click)="verMiHistorial()">
+          <div class="icon-circle color-blue">
+            <ion-icon name="document-text-outline"></ion-icon>
+          </div>
+          <div class="text-content">
+            <h4>Mi Historial Académico</h4>
+            <p>Consulte sus sanciones registradas</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="rolUsuario !== 'aspirante'">
+      <ion-col size="12">
+        <div class="menu-card horizontal-card" (click)="simularEscaneo()">
+          <div class="icon-circle color-orange">
+            <ion-icon name="flask-outline"></ion-icon>
+          </div>
+          <div class="text-content">
+            <h4>Prueba Rápida en PC</h4>
+            <p>Simular Cédula 17001</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+
+<div *ngIf="escanearActivo" class="scanner-overlay">
+  <div class="scan-box"></div> 
+  <ion-button shape="round" color="danger" (click)="detenerEscaner()" class="btn-detener">
+    <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+    Detener Escáner
+  </ion-button>
+</div>

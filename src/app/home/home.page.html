@@ -1,20 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="bg-militar">
+  <div class="login-container animate__animated animate__fadeIn">
+    
+    <div class="header-box">
+      <div class="escudo-container animate__animated animate__zoomIn">
+       <img src="assets/icon/esforse.jpg" alt="Escudo ESFORSE" class="escudo-img">
+      </div>
+      <h1 class="titulo-institucion">ESFORSE</h1>
+      <div class="separador-verde"></div>
+      <p class="subtitulo-sistema">SISTEMA DE GESTIÓN DISCIPLINARIA</p>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card class="login-card animate__animated animate__fadeInUp animate__delay-1s">
+      <ion-card-content class="ion-padding-vertical animate__animated animate__fadeIn animate__delay-1s">
+        
+        <h2 class="card-title">Bienvenido</h2>
+        <p class="card-subtitle">Ingrese sus credenciales para acceder</p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <div class="input-group animate__animated animate__fadeInUp animate__delay-1s">
+          <ion-item lines="none" class="custom-input-item">
+            <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
+            <ion-input 
+              label="Cédula de Identidad" 
+              labelPlacement="floating" 
+              placeholder="Ingrese su cédula"
+              type="tel" 
+              inputmode="numeric" 
+              maxlength="10"
+              [(ngModel)]="credenciales.cedula"
+              class="custom-input">
+            </ion-input>
+          </ion-item>
+        </div>
+
+        <div class="input-group animate__animated animate__fadeInUp animate__delay-2s">
+          <ion-item lines="none" class="custom-input-item">
+            <ion-icon name="lock-closed" slot="start" class="input-icon"></ion-icon>
+            <ion-input 
+              [type]="passwordType" 
+              label="Contraseña" 
+              labelPlacement="floating" 
+              placeholder="Ingrese su contraseña"
+              [(ngModel)]="credenciales.password"
+              class="custom-input">
+            </ion-input>
+            <ion-button fill="clear" slot="end" (click)="togglePassword()" class="btn-eye animate__animated animate__fadeIn animate__delay-2s">
+              <ion-icon [name]="passwordIcon" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </div>
+
+        <div class="animate__animated animate__fadeInUp animate__delay-3s">
+          <ion-button expand="block" class="btn-ingresar" (click)="ingresar()">
+            INGRESAR AL SISTEMA
+            <ion-icon name="arrow-forward-circle" slot="end" class="btn-icon-end animate__animated animate__fadeInLeft animate__delay-3s"></ion-icon>
+          </ion-button>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+
+    <div class="footer-box animate__animated animate__fadeIn animate__delay-3s">
+      <p class="footer-text">Escuela de Formación de Soldados del Ejército</p>
+      <p class="footer-lema">"Vencedores del Cenepa"</p>
+      <p class="version-text">Versión 1.0.0</p>
+    </div>
+
   </div>
 </ion-content>
