@@ -1,0 +1,23 @@
+/* Estilo para los campos de fecha en el módulo de reportes */
+.custom-input {
+    --color: #000000 !important; /* Color del texto que se ingresa */
+    
+    ion-input {
+        color: #000000 !important;
+        font-weight: bold;
+        --placeholder-color: #333333; /* Color para el dd/mm/aaaa */
+        --placeholder-opacity: 1;
+    }
+
+    /* Forzar color negro en navegadores web (Chrome/Edge) */
+    input[type="date"] {
+        color: #000000 !important;
+        text-transform: uppercase;
+    }
+}
+
+/* Si usas etiquetas flotantes, dales color para que no se pierdan */
+ion-label {
+    color: #2f5928 !important; /* Verde oscuro para las etiquetas 'Desde' y 'Hasta' */
+    font-weight: bold;
+}

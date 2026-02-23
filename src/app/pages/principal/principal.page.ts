@@ -134,11 +134,11 @@ export class PrincipalPage {
       buttons: [
         { text: 'Cancelar', role: 'cancel', cssClass: 'btn-cancelar' },
         {
-          text: '📜 Ver Historial',
+          text: 'Ver Historial',
           handler: () => this.navegarA('/historial', soldado)
         },
         {
-          text: '🚨 Sancionar',
+          text: ' Sancionar',
           handler: () => this.navegarA('/sanciones', soldado)
         }
       ]

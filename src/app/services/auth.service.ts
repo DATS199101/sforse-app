@@ -44,4 +44,13 @@ editarFalta(datos: any) {
 eliminarFalta(id: number) {
   return this.http.delete(`${this.apiUrl}/gestion_catalogo.php?id=${id}`);
 }
+guardarSancion(datos: any): Observable<any> {
+  // Asegúrate de que la URL apunte a tu nuevo archivo guardar_sancion.php
+  return this.http.post(`${this.apiUrl}/guardar_sancion.php`, datos);
+}
+obtenerSancionesPorFecha(inicio: string, fin: string): Observable<any> {
+  // Conecta con el PHP enviando los parámetros de fecha para el filtro
+  return this.http.get(`${this.apiUrl}/obtener_sanciones_fecha.php?inicio=${inicio}&fin=${fin}`);
+}
+
 }

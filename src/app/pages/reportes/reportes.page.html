@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background: #2f5928; color: white;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Centro de Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+  <ion-card class="form-card">
+    <ion-card-header>
+      <ion-card-title color="success">Filtrar Sanciones</ion-card-title>
+      <ion-card-subtitle>Seleccione el periodo para generar sus archivos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none" class="custom-input">
+        <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
+        <ion-label position="stacked">Desde:</ion-label>
+        <ion-input type="date" [(ngModel)]="fechaInicio"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="custom-input">
+        <ion-icon name="calendar-number-outline" slot="start" color="primary"></ion-icon>
+        <ion-label position="stacked">Hasta:</ion-label>
+        <ion-input type="date" [(ngModel)]="fechaFin"></ion-input>
+      </ion-item>
+
+      <div class="ion-margin-top">
+        <ion-button expand="block" color="success" (click)="generarExcel()" [disabled]="!fechaInicio || !fechaFin" class="btn-reporte">
+          <ion-icon name="document-text-outline" slot="start"></ion-icon>
+          GENERAR REPORTE (EXCEL)
+        </ion-button>
+
+        <ion-button expand="block" color="danger" (click)="generarPDF()" [disabled]="!fechaInicio || !fechaFin" class="btn-reporte">
+          <ion-icon name="print-outline" slot="start"></ion-icon>
+          GENERAR PARTE MILITAR (PDF)
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
